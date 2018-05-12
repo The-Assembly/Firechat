@@ -1,5 +1,6 @@
 package com.example.amansahil.firechat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +44,12 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         selectedLang = "en";
                 }
+                Intent i = new Intent(MainActivity.this, MenuActivity.class);
+                i.putExtra("username", name);
+                i.putExtra("userLang", selectedLang);
+                startActivity(i);
             }
+
         });
     }
 }

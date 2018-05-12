@@ -38,6 +38,5 @@
         android:textColor="#ffffff"
         android:text="Let's Go"
         android:id="@+id/login_button"
- />
-
-</>
+        />
+</LinearLayout>
