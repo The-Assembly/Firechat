@@ -44,11 +44,13 @@ public class ChatActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        adapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        adapter.stopListening();
     }
 
     public void displayData(){
@@ -62,7 +64,7 @@ public class ChatActivity extends Activity {
         FirebaseListOptions<ChatMessage> options = new FirebaseListOptions.Builder<ChatMessage>().setQuery(query, ChatMessage.class).setLayout(R.layout.messages).build();
         adapter = new FirebaseListAdapter<ChatMessage>(options) {
             @Override
-            protected void populateView(View v, ChatMessage model, int position) {
+            protected void populateView(View v, final ChatMessage model, int position) {
                 final TextView username = v.findViewById(R.id.username);
                 final TextView usermessage = v.findViewById(R.id.usermessage);
                 ImageView useravatar = v.findViewById(R.id.imageView);
@@ -74,11 +76,11 @@ public class ChatActivity extends Activity {
                     protected Void doInBackground(Void... voids) {
                         TranslateOptions options = TranslateOptions.newBuilder().setApiKey(API_KEY).build();
                         final Translate translate = options.getService();
-                        final Translation translation = translate.translate("Hello " + name, Translate.TranslateOption.targetLanguage(userlang));
+                        final Translation translation = translate.translate(model.getMessageText(), Translate.TranslateOption.targetLanguage(userlang));
                         textViewHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                usermessage.setText(translation.getTranslatedText());
+                                usermessage.setText(Html.fromHtml(translation.getTranslatedText()));
                             }
                         });
                         return null;
