@@ -6,7 +6,7 @@ android {
         applicationId "com.example.amansahil.firechat"
         minSdkVersion 17
         targetSdkVersion 27
-        multiDexEnabled true
+        multiDexEnabled true //New
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -23,7 +23,7 @@ android {
         exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/DEPENDENCIES'
-    } // New
+    } // packagingOption all New
 
 }
 

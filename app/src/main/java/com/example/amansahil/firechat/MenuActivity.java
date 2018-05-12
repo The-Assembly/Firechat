@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +18,11 @@ import com.google.cloud.translate.Translation;
 public class MenuActivity extends Activity{
     TextView t1;
     Button science;
+    Button technology;
+    Button pets;
+    Button humour;
+    Button nutella;
+    Button sports;
 
     private static final String API_KEY = "AIzaSyByUsjfI4DX5fQbltvCLZWtdq-vzqZBt5I";
 
@@ -44,7 +50,7 @@ public class MenuActivity extends Activity{
                 textViewHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        t1.setText(translation.getTranslatedText());
+                        t1.setText(Html.fromHtml(translation.getTranslatedText()));
                     }
                 });
                 return null;
@@ -53,19 +59,62 @@ public class MenuActivity extends Activity{
     }
     public void redirect() {
         science = findViewById(R.id.science);
+
+        Bundle bundle = getIntent().getExtras();
+        final String username = bundle.getString("username");
+        final String userLang = bundle.getString("userLang");
+        technology = findViewById(R.id.technology);
+        pets = findViewById(R.id.pet);
+        humour = findViewById(R.id.humour);
+        nutella = findViewById(R.id.nutella);
+        sports = findViewById(R.id.sports);
+        String cat ="science";
+        final Intent i = new Intent(MenuActivity.this, ChatActivity.class);
+        i.putExtra("username", username);
+        i.putExtra("userLang", userLang);
         science.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = getIntent().getExtras();
-                final String username = bundle.getString("username");
-                final String userLang = bundle.getString("userLang");
-                String cat ="science";
-                Intent i = new Intent(MenuActivity.this, ChatActivity.class);
-                i.putExtra("username", username);
-                i.putExtra("userLang", userLang);
-                i.putExtra("cat", cat);
+                i.putExtra("cat", "science");
                 startActivity(i);
             }
         });
+        technology.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i.putExtra("cat", "technology");
+                startActivity(i);
+            }
+        });
+
+        pets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i.putExtra("cat", "pets");
+                startActivity(i);
+            }
+        });
+        humour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i.putExtra("cat", "humour");
+                startActivity(i);
+            }
+        });
+        nutella.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i.putExtra("cat", "nutella");
+                startActivity(i);
+            }
+        });
+        sports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i.putExtra("cat", "sports");
+                startActivity(i);
+            }
+        });
+
     }
 }
