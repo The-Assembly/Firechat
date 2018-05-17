@@ -6,7 +6,7 @@ android {
         applicationId "com.example.amansahil.firechat"
         minSdkVersion 17
         targetSdkVersion 27
-        multiDexEnabled true //New
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -23,7 +23,7 @@ android {
         exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/DEPENDENCIES'
-    } // packagingOption all New
+    }
 
 }
 
@@ -33,7 +33,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
-        exclude group: 'com.android.support', module: 'support-annotations' //New
+        exclude group: 'com.android.support', module: 'support-annotations'
     })
 
     //All new

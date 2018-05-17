@@ -24,7 +24,7 @@ public class MenuActivity extends Activity{
     Button nutella;
     Button sports;
 
-    private static final String API_KEY = "AIzaSyByUsjfI4DX5fQbltvCLZWtdq-vzqZBt5I";
+    private static final String API_KEY = "INSERT YOUR API KEY HERE";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
